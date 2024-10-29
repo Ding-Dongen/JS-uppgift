@@ -1,0 +1,52 @@
+@import "./reset";
+@import "./variables";
+@import "./header";
+@import "./part-2";
+@import "./part-3";
+@import "./part-4";
+@import "./part-5-onlydesktop";
+@import "./part-6-onlydesktop";
+@import "./part-7";
+@import "./part-8";
+@import "./footer";
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+html[data-theme="light"] {
+    --color-text: #{$dark};
+    --color-background: #{$light};
+    --color-background-blue: #{$bgp3};
+    --color-background-pink: #{$bgP1};
+    --color-background-boxfb: #{$light};
+    --color-background-chevron: #{$chevron};
+    --color-background-button: #{$color-dark};
+    --color-text-buttons: #{$light};
+    --color-envelope: #{$color-grey};    
+}
+
+html[data-theme="dark"] {
+    --color-text: #{$light};
+    --color-background: #{$dark};
+    --color-background-blue: #{$boxfb};
+    --color-background-pink: #{$dark};
+    --color-background-boxfb: #{$boxfb};
+    --color-background-chevron: #{$boxfb};
+    --color-background-button: #{$light};
+    --color-text-buttons: #{$dark};
+    --color-envelope: #{$color-grey};    
+    
+}
+
+body {
+    font-family: Manrope;
+    margin: $margin-base;
+    color: var(--color-text);
+    background: var(--color-background);
+}
+
+
+
+
+
+
+
