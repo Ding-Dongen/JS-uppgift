@@ -1,11 +1,12 @@
 import React from 'react'
+import SiliconLogo from '../assets/images/icons/logo-navbar.svg'
 
 const Header = () => {
   return (
     <section className="page-1">
             <div id="container-1" className="nav">
                 
-                <a id="logo" href="index.html"><img src="./images/icons/logo-navbar.svg" alt="Logo" /><span>Silicon</span></a>
+                <a id="logo" href="index.html"><img src={SiliconLogo} alt="Logo" /><span>Silicon</span></a>
 
                 <nav id="main-menu" className="navbar" aria-label="Main Navigation">
                     <a className="nav-link" href="#container-3">Features</a>
@@ -14,7 +15,7 @@ const Header = () => {
 
                 <div id="darkmode-toogle-switch" className="btn-toogle-switch">
                   <span className="label">Dark mode</span>
-                  <label for="switch" className="switchs">
+                  <label className="switchs">
                     <input id="switch" type="checkbox" name="theme_switch" />
                     <span className="slider round"></span>
                   </label>
