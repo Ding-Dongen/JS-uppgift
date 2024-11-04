@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SiliconLogo from '../assets/images/icons/logo-navbar.svg'
 
 const Header = () => {
@@ -6,7 +7,7 @@ const Header = () => {
     <section className="page-1">
             <div id="container-1" className="nav">
                 
-                <a id="logo" href="index.html"><img src={SiliconLogo} alt="Logo" /><span>Silicon</span></a>
+                <Link id="logo" to="/"><img src={SiliconLogo} alt="Logo" /><span>Silicon</span></Link>
 
                 <nav id="main-menu" className="navbar" aria-label="Main Navigation">
                     <a className="nav-link" href="#container-3">Features</a>
