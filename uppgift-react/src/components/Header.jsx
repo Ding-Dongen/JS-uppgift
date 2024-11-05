@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SiliconLogo from '../assets/images/icons/logo-navbar.svg'
+import DarkModeSwitch from './DarkModeSwitch'
 
 const Header = () => {
   return (
@@ -11,16 +12,10 @@ const Header = () => {
 
                 <nav id="main-menu" className="navbar" aria-label="Main Navigation">
                     <a className="nav-link" href="#container-3">Features</a>
-                    <a className="nav-link" href="./contact.html">Contact</a>
+                    <a className="nav-link" href="./contact">Contact</a>
                   </nav>
 
-                <div id="darkmode-toogle-switch" className="btn-toogle-switch">
-                  <span className="label">Dark mode</span>
-                  <label className="switchs">
-                    <input id="switch" type="checkbox" name="theme_switch" />
-                    <span className="slider round"></span>
-                  </label>
-                </div>
+                  <DarkModeSwitch />
 
                 <a id="signin" href="#" className="btn-primary">
                   <i className="fa-regular fa-user"></i>

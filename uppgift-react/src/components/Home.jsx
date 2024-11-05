@@ -6,7 +6,6 @@ import InformationSection from './InformationSection.jsx'
 import SupportSection from './SupportSection.jsx'
 import QuestionSection from './QuestionSection.jsx'
 import SubscribeSection from './SubscribeSection.jsx'
-import Testamonials from './Testemonials.jsx'
 
 
 const Home = () => {

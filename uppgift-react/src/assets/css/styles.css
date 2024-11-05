@@ -6,7 +6,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-:root {
+:root[data-theme="light"] {
     --color-text: #131022;
     --color-background: #fff;
     --color-background-blue: #F3F6FF;
@@ -18,7 +18,7 @@
     --color-envelope: #9397AD;
   }
   
-  /* :root {
+  :root[data-theme="dark"] {
     --color-text: #fff;
     --color-background: #131022;
     --color-background-blue: rgba(255, 255, 255, 0.04);
@@ -28,7 +28,7 @@
     --color-background-button: #fff;
     --color-text-buttons: #131022;
     --color-envelope: #9397AD;
-  } */
+  }
   
   body {
     font-family: Manrope, sans-serif;
