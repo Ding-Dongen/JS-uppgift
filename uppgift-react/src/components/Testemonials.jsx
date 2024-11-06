@@ -42,7 +42,7 @@ const Testamonials = () => {
         {reviews.map((review, index) => (
           <div key={review.id} className={`box box-${index + 1}`}>
 
-              {/* Array part taken from chatGPT men modifierad av mig */}
+              {/* Array part taken from chatGPT but modifyed by me */}
 
             {[...Array(review.starRating)].map((_, i) => (
               <img key={`${review.id}-star-${i}`} src={Star} alt={`${i + 1} of five Stars solid`} />

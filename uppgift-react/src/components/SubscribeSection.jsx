@@ -6,22 +6,25 @@ const SubscribeSection = () => {
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
 
-    const emailValidation = () => {
-      const regEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (regEx.test(email)) {
-        setMessage("Email is valid")
-      } else if (!regEx.test(email)) {
-        setMessage("Email is not valid")
-      } else {
-        setMessage("")
-      }
+    
+ 
+   const validateEmail = (email) => {
+    const regEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regEx.test(email);
+}
+
+
+const handleChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    if (newEmail === "") {
+        setMessage(""); 
+    } else if (!validateEmail(newEmail)) {
+        setMessage("Enter a valid email! (Ex. user@example.com)");
+    } else {
+        setMessage(""); 
     }
-
-    const handleChange = (e) => {
-      setEmail(e.target.value)
-
-    }
-
+}
 
 
   return (
@@ -35,8 +38,9 @@ const SubscribeSection = () => {
                 <div className="form">  
                     <div className="input-icon">
                       <i className="fa-regular fa-envelope"></i>
-                      <input className="form-input" aria-label="Email for newsletter subscription" type="email" placeholder="Your email" />
+                      <input className="form-input" aria-label="Email for newsletter subscription" type="email" placeholder="Your email" value={email} onChange={handleChange} />
                       <button type="button" aria-label="Subscribe to newsletter" className="btn-subscribe">Subscribe</button>
+                      <span className='message-err'>{message}</span>
                     </div>  
                 </div>
               </div>
@@ -49,8 +53,8 @@ const SubscribeSection = () => {
                       <div className="input-icon">
                         <i className="fa-regular fa-envelope"></i>
                         <input className="form-input email" type="email" placeholder="Your email" value={email} onChange={handleChange} />
-                        <button type="button" className="btn-subscribe" onClick={emailValidation}>Subscribe</button>
-                        <p>{message}</p>
+                        <button type="button" className="btn-subscribe">Subscribe</button>
+                        <span className='message-err'>{message}</span>
                       </div>  
                   </div>
                 </div>  

@@ -1340,6 +1340,11 @@
     color: #fff;
     text-decoration: none;
   }
+
+  .message-err {
+    color: red;
+    font-size: small;
+  }
   
   @media (min-width: 768px) {
     .part-8 {

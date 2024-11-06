@@ -8,11 +8,14 @@ import Facebook from '../assets/images/social-btn/facebook.svg'
 import X from '../assets/images/social-btn/x.svg'
 import Instagram from '../assets/images/social-btn/instagram.svg'
 import Youtube from '../assets/images/social-btn/youtube.svg'
+import GoogleMap from '../assets/images/google-map.svg'
+
 
 
 const Contact = () => {
   return (
     <div className='wrapper-contact'>
+        
         
         <section className="top-section">
             <div className="wrapper-contact-us">
@@ -46,23 +49,37 @@ const Contact = () => {
         </section>
 
         <div className="contact-container">
-            <h1>Get Online Consultation</h1>
+            <h2>Get Online Consultation</h2>
         
             <form className="contact-form">
-                <input type="text" id="name" name="name" placeholder="Your Name" required />
-                <input type="email" id="email" name="email" placeholder="Your Email" required />
-                <input type="text" id="subject" name="subject" placeholder="Subject" />
-                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
+                <div>
+                    <label htmlFor="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                </div>
+                <div>
+                    <label htmlFor="message">Message:</label>
+                    <select id="message" name="message" required>
+                        <option value="">Select a message</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit">Make an appointment</button>
             </form>
             
         </div>
 
         <section className="bottom-section">
           <div className="map-container">
-            
+            <img src={GoogleMap} alt="Googlemap" />
           </div>
-          <div className="location">
+          <div className="location location1">
             <h3>Beach 1</h3>
             <div className='map-wrapper'>
             <img src={Map} alt="logos" />
@@ -74,12 +91,12 @@ const Contact = () => {
             </div>
             <div className='map-wrapper '>
             <img src={TimeFive} alt="logos" />
-            <p><strong>Mon-Fri:</strong> 24/7<br /><strong>Sat-Sun:</strong> 24/7</p>
+            <p><strong>Mon - Fri:</strong> 24/7<strong> Sat - Sun: </strong> 24/7</p>
             </div>
           </div>
 
-          <div className="location">
-            <h3>Beach 1</h3>
+          <div className="location location2">
+            <h3>Beach 2</h3>
             <div className='map-wrapper'>
             <img src={Map} alt="logos" />
             <p>1 spiaggia, 09010 Porto Pino SU, Italy</p>
@@ -90,7 +107,7 @@ const Contact = () => {
             </div>
             <div className='map-wrapper '>
             <img src={TimeFive} alt="logos" />
-            <p><strong>Mon-Fri:</strong> 24/7<br /><strong>Sat-Sun:</strong> 24/7</p>
+            <p><strong>Mon - Fri:</strong> 24/7<strong> Sat - Sun: </strong> 24/7</p>
             </div>
           </div>
 
