@@ -432,7 +432,7 @@ h2 {
     .wrapper-contact {
         position: relative;
         margin: 0 auto;
-        max-width: 1320px;
+        
     }
     .top-section {
         background-color: var(--color-background-blue);
