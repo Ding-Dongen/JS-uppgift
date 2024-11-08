@@ -6,7 +6,7 @@ import DarkModeSwitch from './DarkModeSwitch'
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
 
-    const togglMenu = () => {
+    const toggleMenu = () => {
       setShowMenu(!showMenu)
     }
 
@@ -17,9 +17,9 @@ const Header = () => {
                 
                 <Link id="logo" to="/"><img src={SiliconLogo} alt="Logo" /><span>Silicon</span></Link>
 
-                  <nav id="main-menu" className={`${showMenu ? 'navbar' : ''}`} aria-label="Main Navigation">
-                    <a className="nav-link" href="#container-3">Features</a>
-                    <a className="nav-link" href="./contact">Contact</a>
+                  <nav id="main-menu" className="navbar" aria-label="Main Navigation">
+                    <NavLink className="nav-link" to="#container-3">Features</NavLink>
+                    <NavLink className="nav-link" to="./contact">Contact</NavLink>
                   </nav>
 
                   <DarkModeSwitch />
@@ -29,9 +29,19 @@ const Header = () => {
                   <span>Sign in / up</span>
                 </a>
 
-                <button className="btn-mobile" onClick={togglMenu}>
+                <button className="btn-mobile" onClick={toggleMenu}>
                   <i className="fa-solid fa-bars"></i>
                 </button>
+
+                {showMenu && (
+                    <div className="mobile-menu-overlay" onClick={toggleMenu}>
+                        <nav className="mobile-menu">
+                            <NavLink className="nav-link" to="/">Home</NavLink>
+                            <NavLink className="nav-link" to="#container-3">Features</NavLink>
+                            <NavLink className="nav-link" to="./contact">Contact</NavLink>
+                        </nav>
+                    </div>
+                )}
 
             </div>
     </section>

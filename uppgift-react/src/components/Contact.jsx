@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Envelope from '../assets/images/icons/bx-envelope.svg'
 import Groups from '../assets/images/icons/add-group.svg'
 import TimeFive from '../assets/images/icons/bx-time-five.svg'
@@ -13,6 +13,80 @@ import GoogleMap from '../assets/images/google-map.svg'
 
 
 const Contact = () => {
+    // Kod taget från Hans men lite modifierad av mig
+    const [options, setOptions] = useState([{ id: 1, text: "General Inquiry" },
+                                            { id: 2, text: "Technical Support" }, 
+                                            { id: 3, text: "Feedback" },
+                                            { id: 4, text: "Other" }
+    ], [])
+
+    const [formData, setFormData] = useState({ name: '', email: '', specialist: options[0].id, })
+    const [errors, setErrors] = useState({})
+    const [submitted, setSubmitted] = useState(false)
+
+    const regExName = /^[a-öA-Ö\s\-]{2,}$/
+    const regExEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+
+    const validateField = (name, value) => {
+        let error = ''
+
+        if (name === 'name' && !regExName.test(value)) {
+            error = "Must be at least 2 characters long and no numbers"
+        } else if (name === 'email' && !regExEmail.test(value)) {
+            error = "Enter a valid email (eg. username@example.se)"
+        }
+
+        setErrors(prevErrors => ({ ...prevErrors, [name]: error}))
+    }
+
+    const ValidateForm = () => {
+        const newErrors = {}
+
+        if (!regExName.test(formData.name)) {
+            newErrors.name = "Enter at least 2 characters long and no numbers"
+        }
+        if (!regExEmail.test(formData.email)) {
+            newErrors.email = "Enter a valid email (eg. username@example.se)"
+        }
+
+        setErrors(newErrors)
+        return Object.keys(newErrors). length === 0
+    }    
+    
+    const handleInputChange = (e) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+
+        validateField(name, value)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if (ValidateForm()) {
+            const res = await fetch('https://win24-assignment.azurewebsites.net/api/forms/contact', {
+                method: 'post',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            if (res.ok) {
+                setSubmitted(true)
+                setFormData({ name: '', email: '', category: options[0].id, })
+            }
+            console.log('valid form')
+            } else {
+                const errorData = await res.json();
+                console.error('Error:', errorData);
+                console.log('not valid')
+            }
+    }
+
+
+
+
   return (
     <div className='wrapper-contact'>
         
@@ -48,32 +122,32 @@ const Contact = () => {
             </div>
         </section>
 
-        <div className="contact-container">
-            <h2>Get Online Consultation</h2>
         
-            <form className="contact-form">
-                <div>
-                    <label htmlFor="name">Full Name:</label>
-                    <input type="text" id="name" name="name" required />
+            <form className="contact-form" noValidate>
+                <div className="header">
+                    <h2>Get Online Consultation</h2>
                 </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
+                <div className='body'>
+                    <div>
+                        <label htmlFor="name">Full Name:</label>
+                        <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+                        {errors.name && <span className='message-err'>{errors.name}</span>}
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+                        {errors.email && <span className='message-err'>{errors.email}</span>}
+                    </div>
+                    <div>
+                        <label htmlFor="message">Message:</label>
+                        <select id="message" name="specialist" value={options.id} onChange={handleInputChange} required>
+                            { options.map(option => (<option key={option.id} value={option.id}>{option.text}</option>))}
+                        </select>
+                    </div>
+                    <button type="submit" onClick={handleSubmit}>Make an appointment</button>
                 </div>
-                <div>
-                    <label htmlFor="message">Message:</label>
-                    <select id="message" name="message" required>
-                        <option value="">Select a message</option>
-                        <option value="general">General Inquiry</option>
-                        <option value="support">Technical Support</option>
-                        <option value="feedback">Feedback</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <button type="submit">Make an appointment</button>
             </form>
             
-        </div>
 
         <section className="bottom-section">
           <div className="map-container">

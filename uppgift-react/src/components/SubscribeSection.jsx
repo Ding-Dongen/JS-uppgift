@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 import Bell from '../assets/images/imgage-subscribe.svg'
 
 const SubscribeSection = () => {
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     
  
@@ -26,6 +28,25 @@ const handleChange = (e) => {
     }
 }
 
+const handleSubscribe = async () => {
+  if (validateEmail(email)) {
+      setIsSubmitting(true);
+      try {
+          // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint for subscription
+          const response = await axios.post('https://win24-assignment.azurewebsites.net/api/forms/subscribe', { email });
+          setMessage(response.data.message || "Subscription successful!");
+          setEmail("");  // Clear the email input field
+      } catch (error) {
+          console.error('Subscription failed:', error);
+          setMessage("An error occurred while subscribing. Please try again later.");
+      } finally {
+          setIsSubmitting(false);
+      }
+  } else {
+      setMessage("Please enter a valid email address.");
+  }
+};
+
 
   return (
         <section className="section-8" aria-label="Subscribe to our newsletter overview">
@@ -38,8 +59,8 @@ const handleChange = (e) => {
                 <div className="form">  
                     <div className="input-icon">
                       <i className="fa-regular fa-envelope"></i>
-                      <input className="form-input" aria-label="Email for newsletter subscription" type="email" placeholder="Your email" value={email} onChange={handleChange} />
-                      <button type="button" aria-label="Subscribe to newsletter" className="btn-subscribe">Subscribe</button>
+                      <input className="form-input" aria-label="Email for newsletter subscription" type="email" placeholder="Your email" value={email} onChange={handleChange} disabled={isSubmitting} />
+                      <button type="button" aria-label="Subscribe to newsletter" className="btn-subscribe" onClick={handleSubscribe} disabled={isSubmitting}>Subscribe</button>
                       <span className='message-err'>{message}</span>
                     </div>  
                 </div>
@@ -52,8 +73,8 @@ const handleChange = (e) => {
                   <div className="form">  
                       <div className="input-icon">
                         <i className="fa-regular fa-envelope"></i>
-                        <input className="form-input email" type="email" placeholder="Your email" value={email} onChange={handleChange} />
-                        <button type="button" className="btn-subscribe">Subscribe</button>
+                        <input className="form-input email" type="email" placeholder="Your email" value={email} onChange={handleChange} disabled={isSubmitting} />
+                        <button type="button" className="btn-subscribe" onClick={handleSubscribe} disabled={isSubmitting}>Subscribe</button>
                         <span className='message-err'>{message}</span>
                       </div>  
                   </div>

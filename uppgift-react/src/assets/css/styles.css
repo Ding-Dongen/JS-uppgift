@@ -130,6 +130,10 @@
     font-size: 2rem;
     color: var(--color-text);
   }
+
+  .btn-mobile:active {
+    background-color: #000;
+  }
   
   .nav-link {
     color: var(--color-text);
@@ -143,6 +147,12 @@
   
   .navbar {
     display: none;
+  }
+
+  .mobile-menu-overlay {
+    background-color: var(--color-envelope);
+    padding: 1rem;
+    width: 100%;
   }
   
   #signin {
@@ -185,6 +195,7 @@
     .nav {
       gap: 3rem;
     }
+    
   }
   @media (min-width: 1400px) {
     #container-1 {
