@@ -7,6 +7,7 @@ const SubscribeSection = () => {
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     
  
@@ -28,24 +29,38 @@ const handleChange = (e) => {
     }
 }
 
-const handleSubscribe = async () => {
+const handleOk = () => {
+  setIsSubmitted(false)
+}
+
+const handleSubscribe = async (e) => {
+  e.preventDefault()
+
   if (validateEmail(email)) {
       setIsSubmitting(true);
       try {
-          // Replace 'YOUR_API_ENDPOINT' with the actual API endpoint for subscription
+          // Part taken from chatGPT but modified by me
           const response = await axios.post('https://win24-assignment.azurewebsites.net/api/forms/subscribe', { email });
-          setMessage(response.data.message || "Subscription successful!");
-          setEmail("");  // Clear the email input field
+          setIsSubmitted(true)
+          setEmail("");
       } catch (error) {
           console.error('Subscription failed:', error);
           setMessage("An error occurred while subscribing. Please try again later.");
       } finally {
           setIsSubmitting(false);
       }
-  } else {
-      setMessage("Please enter a valid email address.");
   }
 };
+
+if (isSubmitted) {
+  return (
+    <div className='thank-you'>
+      <h2>Thank you for your subscription</h2>
+      <p>We hope you will enjoy it!</p>
+      <button className='btn-ok' onClick={handleOk}>OK</button>
+    </div>
+  )
+}
 
 
   return (
@@ -70,14 +85,14 @@ const handleSubscribe = async () => {
                     <img src={Bell} alt="Bell" />
                     <h4>Subscribe to our newsletter</h4>
                   </div>
-                  <div className="form">  
+                  <form onSubmit={handleSubscribe} className="form">  
                       <div className="input-icon">
                         <i className="fa-regular fa-envelope"></i>
                         <input className="form-input email" type="email" placeholder="Your email" value={email} onChange={handleChange} disabled={isSubmitting} />
                         <button type="button" className="btn-subscribe" onClick={handleSubscribe} disabled={isSubmitting}>Subscribe</button>
                         <span className='message-err'>{message}</span>
                       </div>  
-                  </div>
+                  </form>
                 </div>  
             </div>
         </section>

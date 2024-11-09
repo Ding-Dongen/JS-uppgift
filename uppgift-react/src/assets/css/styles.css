@@ -16,6 +16,7 @@
     --color-background-button: #0B0F19;
     --color-text-buttons: #fff;
     --color-envelope: #9397AD;
+    --color-background-subscribe: #00fe33; 
   }
   
   :root[data-theme="dark"] {
@@ -28,6 +29,7 @@
     --color-background-button: #fff;
     --color-text-buttons: #131022;
     --color-envelope: #9397AD;
+    --color-background-subscribe: rgba(255, 255, 255, 0.04);
   }
   
   body {
@@ -216,6 +218,21 @@
     }
     .navbar {
       display: block;
+    }
+  
+    .breadcrumb {
+      display: flex;
+      max-width: 1320px;
+      margin: 0 auto;
+      font-size: x-large;
+      padding: 1rem;
+      background: var(--color-background-blue);
+    }
+    
+    .left-side {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
   }
 
@@ -1007,6 +1024,7 @@
   .part-7 h2 {
     padding: 1rem 1rem;
     text-align: center;
+    color: var(--color-text)
   }
   
   .para-faq {
@@ -1357,6 +1375,23 @@
     font-size: small;
   }
   
+  .thank-you {
+    background-color: #a6efb5;
+    display: flex;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-ok {
+    padding: 0.5rem 2rem;
+    margin-bottom: 1rem;
+    background-color: #01d347;
+    border-radius: 0.375rem;
+  }
+  
   @media (min-width: 768px) {
     .part-8 {
       min-width: 720px;
@@ -1419,6 +1454,7 @@
       color: var(--color-envelope);
     }
   }
+  
 
   /* Footer Section */
 

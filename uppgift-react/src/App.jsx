@@ -6,6 +6,7 @@ import Contact from './components/Contact'
 import Home from './components/Home'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import Breadcrumbs from './components/Breadcrumbs.jsx'
 
 
 
@@ -16,6 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      <Breadcrumbs />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

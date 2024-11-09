@@ -4,22 +4,33 @@
     box-sizing: border-box;
 }
 
-:root {
-    --bgP1:--radial-gradient(118% 116.18% at 50% 100%, rgba(99, 102, 241, 0.10) 0%, rgba(218, 70, 239, 0.05) 41.83%, rgba(241, 244, 253, 0.07) 82.52%);
-    --brand-primary: #6467f2cd;
-    --light-text: #fff;
-    --color-grey: #9397AD;
-    --color-dark: #131022;
-    --bgp3: #F3F6FF;
-    --boxfb: rgba(255, 255, 255, 0.04);
-    --chevron: #F3F6FF;
-    --support-grey: #E2E5F1;
+:root[data-theme="light"] {
+    --color-text: #131022;
+    --color-background: #fff;
     --color-background-blue: #F3F6FF;
-
-
-    --dark: #131022;
-    --light: #fff;
-}
+    --color-background-pink: radial-gradient(118% 116.18% at 50% 100%, rgba(99, 102, 241, 0.1) 0%, rgba(218, 70, 239, 0.05) 41.83%, rgba(241, 244, 253, 0.07) 82.52%);
+    --color-background-boxfb: #fff;
+    --color-background-chevron: #F3F6FF;
+    --color-background-button: #0B0F19;
+    --color-text-buttons: #fff;
+    --color-envelope: #9397AD;
+    --color-background-subscribe: #00fe33;
+    --color-background-slider: #ccc;
+  }
+  
+  :root[data-theme="dark"] {
+    --color-text: #fff;
+    --color-background: #131022;
+    --color-background-blue: rgba(255, 255, 255, 0.04);
+    --color-background-pink: #131022;
+    --color-background-boxfb: rgba(255, 255, 255, 0.04);
+    --color-background-chevron: rgba(255, 255, 255, 0.04);
+    --color-background-button: #fff;
+    --color-text-buttons: #131022;
+    --color-envelope: #9397AD;
+    --color-background-subscribe: rgba(255, 255, 255, 0.04);
+    --color-background-slider: #ccc;
+  }
 
 a {
     text-decoration: none;
@@ -102,8 +113,8 @@ a:hover {
 }
 
 .btn-primary {
-    background-color: var(--brand-primary);
-    color: var(--light-text);
+    background-color: #6366F1;
+    color: #fff;
     border-radius: 8px;
     padding: 12px 25px;
     display: flex;
@@ -272,8 +283,12 @@ a:hover {
     border-radius: 8px;
 }
 
+.contact-head {
+    color: var(--color-text);
+}
+
 h2 {
-    color: #333;
+    color: var(--color-text);
     padding-left: 1rem;
     padding-top: 1rem;
     font-weight: 800;
@@ -284,8 +299,12 @@ h2 {
 
 /* Taken from cahtGPT but modifyed by me */
 
+.header-form {
+    color: var(--color-text);
+}
+
 .contact-form {
-    background: white;
+    background: var(--color-background-boxfb);
     padding: 20px 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -312,7 +331,7 @@ h2 {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+    box-sizing: border-box;    
 }
 
 /* Specific styling for the dropdown */
@@ -414,6 +433,7 @@ h2 {
 
 .social-container {
     display: flex;
+    gap: 1rem;
     
 }
 
@@ -494,6 +514,11 @@ h2 {
         margin: 0 auto;
         padding: 20px;
         border-radius: 8px;
+        color: var(--color-text);
+    }
+
+    .header-form {
+        color: var(--color-text);
     }
     
     h2 {
@@ -507,7 +532,7 @@ h2 {
     /* Taken from cahtGPT but modifyed by me */
     
     .contact-form {
-        background: white;
+        background: var;
         padding: 20px 40px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

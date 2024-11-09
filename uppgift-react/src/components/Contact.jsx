@@ -125,7 +125,7 @@ const Contact = () => {
         
             <form className="contact-form" noValidate>
                 <div className="header">
-                    <h2>Get Online Consultation</h2>
+                    <h2 className='header-form'>Get Online Consultation</h2>
                 </div>
                 <div className='body'>
                     <div>
