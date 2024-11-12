@@ -14,13 +14,13 @@ import GoogleMap from '../assets/images/google-map.svg'
 
 const Contact = () => {
     // Kod taget från Hans men lite modifierad av mig
-    const [options, setOptions] = useState([{ id: 1, text: "General Inquiry" },
-                                            { id: 2, text: "Technical Support" }, 
-                                            { id: 3, text: "Feedback" },
-                                            { id: 4, text: "Other" }
+    const [options, setOptions] = useState([{ id: 1, text: "Surgery" },
+                                            { id: 2, text: "Dentist" }, 
+                                            { id: 3, text: "Oncologist" },
+                                            { id: 4, text: "Colonoscopy" }
     ], [])
 
-    const [formData, setFormData] = useState({ name: '', email: '', specialist: options[0].id, })
+    const [formData, setFormData] = useState({ fullName: '', email: '', specialist: options[0].text, })
     const [errors, setErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
 
@@ -31,7 +31,7 @@ const Contact = () => {
     const validateField = (name, value) => {
         let error = ''
 
-        if (name === 'name' && !regExName.test(value)) {
+        if (name === 'fullName' && !regExName.test(value)) {
             error = "Must be at least 2 characters long and no numbers"
         } else if (name === 'email' && !regExEmail.test(value)) {
             error = "Enter a valid email (eg. username@example.se)"
@@ -43,8 +43,8 @@ const Contact = () => {
     const ValidateForm = () => {
         const newErrors = {}
 
-        if (!regExName.test(formData.name)) {
-            newErrors.name = "Enter at least 2 characters long and no numbers"
+        if (!regExName.test(formData.fullName)) {
+            newErrors.fullName = "Enter at least 2 characters long and no numbers"
         }
         if (!regExEmail.test(formData.email)) {
             newErrors.email = "Enter a valid email (eg. username@example.se)"
@@ -56,10 +56,21 @@ const Contact = () => {
     
     const handleInputChange = (e) => {
         const { name, value } = e.target
+        let newValue = value;
+
+        if (name === 'specialist') {
+            const selectedOption = options.find(option => option.id === parseInt(value, 10));
+            newValue = selectedOption ? selectedOption.text : '';
+        }
+
         setFormData({ ...formData, [name]: value })
 
         validateField(name, value)
     }
+
+    const handleOk = () => {
+        setSubmitted(false)
+      }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -74,15 +85,26 @@ const Contact = () => {
             })
             if (res.ok) {
                 setSubmitted(true)
-                setFormData({ name: '', email: '', category: options[0].id, })
+                setFormData({ fullName: '', email: '', category: options[0].id, })
             }
             console.log('valid form')
+            console.log(formData)
             } else {
                 const errorData = await res.json();
                 console.error('Error:', errorData);
                 console.log('not valid')
             }
     }
+
+    if (submitted) {
+        return (
+          <div className='thank-you'>
+            <h2>Thank you for your appointment inquiry</h2>
+            <p>We hope  to get back to you as soon as possible!</p>
+            <button className='btn-ok' onClick={handleOk}>OK</button>
+          </div>
+        )
+      }
 
 
 
@@ -130,7 +152,7 @@ const Contact = () => {
                 <div className='body'>
                     <div>
                         <label htmlFor="name">Full Name:</label>
-                        <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+                        <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required />
                         {errors.name && <span className='message-err'>{errors.name}</span>}
                     </div>
                     <div>
@@ -139,8 +161,8 @@ const Contact = () => {
                         {errors.email && <span className='message-err'>{errors.email}</span>}
                     </div>
                     <div>
-                        <label htmlFor="message">Message:</label>
-                        <select id="message" name="specialist" value={options.id} onChange={handleInputChange} required>
+                        <label htmlFor="message">Specialist:</label>
+                        <select id="specialist" className='custom-select' name="specialist" value={options.specialist} onChange={handleInputChange} required>
                             { options.map(option => (<option key={option.id} value={option.id}>{option.text}</option>))}
                         </select>
                     </div>
@@ -154,34 +176,34 @@ const Contact = () => {
             <img src={GoogleMap} alt="Googlemap" />
           </div>
           <div className="location location1">
-            <h3>Beach 1</h3>
+            <h3>Medical Center 1</h3>
             <div className='map-wrapper'>
             <img src={Map} alt="logos" />
-            <p>1 spiaggia, 09010 Porto Pino SU, Italy</p>
+            <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
             </div>
             <div className='map-wrapper'>
             <img src={PhoneCall} alt="logos" />
-            <p>Airline comapany</p>
+            <p>(406) 555-0120</p>
             </div>
             <div className='map-wrapper '>
             <img src={TimeFive} alt="logos" />
-            <p><strong>Mon - Fri:</strong> 24/7<strong> Sat - Sun: </strong> 24/7</p>
+            <p><strong>Mon - Fri:</strong> 9:00 am - 22:00 am<strong><br />Sat - Sun: </strong> 9:00 am - 20:00 am</p>
             </div>
           </div>
 
           <div className="location location2">
-            <h3>Beach 2</h3>
+            <h3>Medical Center 2</h3>
             <div className='map-wrapper'>
             <img src={Map} alt="logos" />
-            <p>1 spiaggia, 09010 Porto Pino SU, Italy</p>
+            <p>2464 Royal Ln. Mesa,New Jersey 45463</p>
             </div>
             <div className='map-wrapper'>
             <img src={PhoneCall} alt="logos" />
-            <p>Airline comapany</p>
+            <p>(406) 544-0123</p>
             </div>
             <div className='map-wrapper '>
             <img src={TimeFive} alt="logos" />
-            <p><strong>Mon - Fri:</strong> 24/7<strong> Sat - Sun: </strong> 24/7</p>
+            <p><strong>Mon - Fri:</strong> 9:00 am - 22:00 am<strong><br />Sat - Sun: </strong> 9:00 am - 20:00 am</p>
             </div>
           </div>
 

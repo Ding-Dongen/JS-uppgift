@@ -384,6 +384,18 @@ h2 {
 .contact-form select {
     padding-right: 30px; /* Make room for the custom arrow */
 }
+
+/* Custom Select */
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.85em auto, 100%;
+    padding-right: 2.5em;
+}
  
 /* Bottom section from here */
 
@@ -415,6 +427,12 @@ h2 {
     margin-top: 1rem;
 }
 
+.location p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25.6px;
+}
+
 .location h3 {
     display: flex;
     justify-content: center;
@@ -423,7 +441,7 @@ h2 {
 }
 
 .location1 {
-    grid-column: 8 / 11;
+    grid-column: 8 / 12;
     grid-row: 1 / 2;
 }
 
@@ -539,7 +557,7 @@ h2 {
         width: 100%;
         max-width: 500px;
         position: absolute;
-        right: 200px;
+        right: 150px;
         top: 80px;
        
     }
@@ -585,7 +603,7 @@ h2 {
     .contact-form button {
         width: 100%;
         padding: 10px;
-        background-color: #5cb85c;
+        background-color: #6366F1;
         color: white;
         border: none;
         border-radius: 4px;

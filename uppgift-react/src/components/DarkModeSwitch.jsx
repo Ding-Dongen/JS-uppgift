@@ -1,44 +1,18 @@
-import React, { useEffect, useState } from 'react'
-
-// JS kod tagen från hans men använt mig av samma upplägg som i tidigare kurs
+import React from 'react';
+import { useTheme } from './ThemeContext';
 
 const DarkModeSwitch = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false)
-
-    const toggleDarkMode = () => {
-        const newMode = !isDarkMode
-        setIsDarkMode(newMode)
-
-        if (newMode) {
-            document.documentElement.setAttribute('data-theme', 'dark')
-            localStorage.setItem('them', 'dark')
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light')
-            localStorage.setItem('them', 'light')
-        }
-    }
-
-    // useEffect(() => {
-    //     const savedTheme = localStorage.getItem('theme')
-    //     if (savedTheme === 'dark') {
-    //         document.documentElement.setAttribute('data-theme', 'dark')
-    //         setIsDarkMode(true)
-    //     } else {
-    //         document.documentElement.setAttribute('data-theme', 'light')
-    //         setIsDarkMode(false)
-    //     }
-    // }, [])
-
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   return (
-        <div id="darkmode-toogle-switch" className="btn-toogle-switch">
-            <span className="label">Dark mode</span>
-            <label className="switchs">
-            <input id="switch" type="checkbox" checked={isDarkMode} name="theme_switch" onChange={toggleDarkMode} />
-            <span className="slider round"></span>
-            </label>
-        </div>
-)
+    <div id="darkmode-toggle-switch" className="btn-toggle-switch">
+      <span className="label">Dark mode</span>
+      <label className="switch">
+        <input id="switch" type="checkbox" checked={isDarkMode} name="theme_switch" onChange={toggleDarkMode}/>
+        <span className="slider round"></span>
+      </label>
+    </div>
+  );
 }
 
-export default DarkModeSwitch
+export default DarkModeSwitch;

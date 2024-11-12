@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Breadcrumbs from './components/Breadcrumbs.jsx'
+import { ThemeProvider } from './components/ThemeContext.jsx'
 
 
 
@@ -15,6 +16,7 @@ function App() {
 
 
   return (
+    <ThemeProvider>
     <BrowserRouter>
       <Header />
       <Breadcrumbs />
@@ -26,6 +28,7 @@ function App() {
       </main>
       <Footer />
     </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
