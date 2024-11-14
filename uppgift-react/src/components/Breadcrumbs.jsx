@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+// Made by me with help off AI
 const Breadcrumbs = () => {
     const location = useLocation();
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);

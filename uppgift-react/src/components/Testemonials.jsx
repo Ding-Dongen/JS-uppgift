@@ -29,9 +29,7 @@ const Testamonials = () => {
     fetchReviews();
   }, []); 
 
-  if (isLoading) return <div>Loading reviews...</div>;
-  if (error) return <div>Error fetching reviews: {error}</div>;
-  if (reviews.length === 0) return <div>No reviews found.</div>;
+  
 
   return (
     <section className="section-6-only-desktop" aria-label="Support and reviews overview">

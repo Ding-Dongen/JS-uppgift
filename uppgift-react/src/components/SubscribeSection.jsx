@@ -90,7 +90,9 @@ if (isSubmitted) {
                         <i className="fa-regular fa-envelope"></i>
                         <input className="form-input email" type="email" placeholder="Your email" value={email} onChange={handleChange} disabled={isSubmitting} />
                         <button type="button" className="btn-subscribe" onClick={handleSubscribe} disabled={isSubmitting}>Subscribe</button>
+                        <div>
                         <span className='message-err'>{message}</span>
+                        </div>
                       </div>  
                   </form>
                 </div>  

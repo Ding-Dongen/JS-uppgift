@@ -15,61 +15,6 @@ const QuestionSection = () => {
             to get in touch?</p>
         <div className="box-accordion">
             <Accordion />
-            {/* <button className="accordion">Is any of my personal information
-            stored in the App?
-            <span className="btn-accordion">
-                <i className="fa-solid fa-chevron-down"></i>
-            </span>  
-            </button>
-            <div className="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-
-            <button className="accordion">What formats can I download my
-            transaction history in?
-            <span className="btn-accordion">
-                <i className="fa-solid fa-chevron-down"></i>
-            </span> 
-            </button>
-            <div className="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-
-            <button className="accordion">Can I schedule future transfers?
-            <span className="btn-accordion">
-                <i className="fa-solid fa-chevron-down"></i>
-            </span> 
-            </button>
-            <div className="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <button className="accordion">When can I use Banking App
-            services?
-            <span className="btn-accordion">
-                <i className="fa-solid fa-chevron-down"></i>
-            </span> 
-            </button>
-            <div className="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <button className="accordion">Can I create my own password that is
-            easy for me to remember?
-            <span className="btn-accordion">
-                <i className="fa-solid fa-chevron-down"></i>
-            </span> 
-            </button>
-            <div className="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <button className="accordion">What happens if I forget or lose my
-            password?
-            <span className="btn-accordion">
-                <i className="fa-solid fa-chevron-down"></i>
-            </span> 
-            </button>
-            <div className="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div> */}
         </div>
 
         <div className="btn-support">
@@ -97,33 +42,5 @@ const QuestionSection = () => {
     </section>
   )
 }
-
-const data = [
-    {
-      question: "Is any of my personal information stored in the App?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    },
-    {
-      question: "What formats can I download my transaction history in?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    },
-    {
-      question: "Can I schedule future transfers?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    },
-    // Add more questions here if needed
-    {
-      question: "When can I use Banking App services?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    },
-    {
-      question: "Can I create my own password that is easy for me to remember?",
-      answer: "Yes, you can create a password that's easy for you to remember."
-    },
-    {
-      question: "What happens if I forget or lose my password?",
-      answer: "You can reset your password using the 'Forgot Password' feature."
-    }
-  ];
 
 export default QuestionSection
